@@ -1,4 +1,4 @@
-const db = require('../../../../scripts/database/database-adapter');
+const db = require('../../database/database-adapter');
 const locationsService = require('../locations/locations.service');
 
 class FleetMover {

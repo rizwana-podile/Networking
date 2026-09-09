@@ -1,4 +1,4 @@
-const db = require('../../../../scripts/database/database-adapter');
+const db = require('../../database/database-adapter');
 class AlertsService {
   async listAlerts(status) {
     let list = await db.query('alerts');

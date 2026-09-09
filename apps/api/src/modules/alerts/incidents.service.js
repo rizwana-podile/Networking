@@ -1,4 +1,4 @@
-const db = require('../../../../scripts/database/database-adapter');
+const db = require('../../database/database-adapter');
 class IncidentsService {
   constructor() { this.comments = new Map(); }
   async addComment(incidentId, userName, comment) {

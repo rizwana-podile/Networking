@@ -1,4 +1,4 @@
-const db = require('../../../../scripts/database/database-adapter');
+const db = require('../../database/database-adapter');
 class SlaService {
   async getAvailability(period = '24h') {
     const nodes = await db.query('network_nodes');

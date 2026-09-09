@@ -1,4 +1,4 @@
-const db = require('../../../../scripts/database/database-adapter');
+const db = require('../../database/database-adapter');
 const socketGateway = require('../../websocket/socket.gateway');
 class NotificationsService {
   async send(userId, title, body, severity = 'INFO', category = 'SYSTEM') {

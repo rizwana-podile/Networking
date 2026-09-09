@@ -1,4 +1,4 @@
-const db = require('../../../../scripts/database/database-adapter');
+const db = require('../../database/database-adapter');
 class LinksService {
   async listLinks() { return db.query('network_links'); }
   async createLink(data) {

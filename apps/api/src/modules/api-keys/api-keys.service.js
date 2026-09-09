@@ -1,5 +1,5 @@
 const crypto = require('crypto');
-const db = require('../../../../scripts/database/database-adapter');
+const db = require('../../database/database-adapter');
 class ApiKeysService {
   async createKey(name, scopes = ['read:all'], userId = 'usr-admin') {
     const rawSecret = `geonet_live_${crypto.randomBytes(24).toString('hex')}`;

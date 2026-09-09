@@ -1,4 +1,4 @@
-const db = require('../../../../scripts/database/database-adapter');
+const db = require('../../database/database-adapter');
 class TelemetryService {
   async ingestNodeMetrics(nodeId, metrics) {
     const node = await db.findById('network_nodes', nodeId);
