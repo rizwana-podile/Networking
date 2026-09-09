@@ -74,7 +74,7 @@ export const ExecutiveDashboard: React.FC = () => {
                   <Badge variant="warning">HIGH</Badge>
                   <span className="text-sm font-semibold text-slate-200">Edge Link Latency SLA Exceeded</span>
                 </div>
-                <div className="text-xs text-slate-400 mt-1">Disaster Recovery Edge Node • 145ms > 100ms</div>
+                <div className="text-xs text-slate-400 mt-1">Disaster Recovery Edge Node • 145ms &gt; 100ms</div>
               </div>
               <Button size="sm" variant="secondary" onClick={() => alert('Acknowledging alert...')}>Ack</Button>
             </div>

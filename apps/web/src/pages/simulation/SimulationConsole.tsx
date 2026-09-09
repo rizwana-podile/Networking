@@ -54,7 +54,7 @@ export const SimulationConsole: React.FC = () => {
         <Card title="Fault Injection Console" subtitle="Trigger transient failures to test alarms">
           <div className="space-y-3">
             <Button variant="secondary" size="sm" className="w-full justify-between" onClick={() => injectFault('High Latency Spike (>150ms)')}>
-              <span>⚡ Inject Latency Spike (>150ms)</span>
+              <span>⚡ Inject Latency Spike (&gt;150ms)</span>
               <Badge variant="warning">Spike</Badge>
             </Button>
             <Button variant="secondary" size="sm" className="w-full justify-between" onClick={() => injectFault('Packet Loss Drop (15%)')}>
