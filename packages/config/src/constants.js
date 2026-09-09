@@ -1,5 +1,4 @@
-﻿const path = require('path');
-let ROLE_PERMISSIONS_MAP = {
+const ROLE_PERMISSIONS_MAP = {
   SUPER_ADMIN: ['*'],
   ADMIN: ['users.view', 'devices.view', 'devices.create', 'devices.update', 'devices.delete', 'network.view', 'network.manage', 'alerts.view', 'alerts.manage'],
   NETWORK_ADMIN: ['network.view', 'network.manage', 'network.probe', 'topology.view', 'alerts.view', 'alerts.manage'],
@@ -11,18 +10,4 @@ let ROLE_PERMISSIONS_MAP = {
   STANDARD_USER: ['devices.view', 'network.view', 'alerts.view'],
   VIEWER: ['devices.view', 'network.view', 'alerts.view']
 };
-
-class RbacService {
-  getRolePermissions(role) {
-    return ROLE_PERMISSIONS_MAP[role] || [];
-  }
-  hasPermission(role, permission) {
-    if (role === 'SUPER_ADMIN') return true;
-    const permissions = this.getRolePermissions(role);
-    return permissions.includes(permission) || permissions.includes('*');
-  }
-  getAllRoles() {
-    return Object.keys(ROLE_PERMISSIONS_MAP);
-  }
-}
-module.exports = new RbacService();
+module.exports = { ROLE_PERMISSIONS_MAP };
