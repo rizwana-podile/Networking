@@ -1,0 +1,70 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "composite": false,
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "noImplicitThis": true,
+    "alwaysStrict": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "baseUrl": ".",
+    "paths": {
+      "@geonet/types": [
+        "packages/types/src"
+      ],
+      "@geonet/types/*": [
+        "packages/types/src/*"
+      ],
+      "@geonet/config": [
+        "packages/config/src"
+      ],
+      "@geonet/config/*": [
+        "packages/config/src/*"
+      ],
+      "@geonet/utils": [
+        "packages/utils/src"
+      ],
+      "@geonet/utils/*": [
+        "packages/utils/src/*"
+      ],
+      "@geonet/validation": [
+        "packages/validation/src"
+      ],
+      "@geonet/validation/*": [
+        "packages/validation/src/*"
+      ],
+      "@geonet/api-client": [
+        "packages/api-client/src"
+      ],
+      "@geonet/api-client/*": [
+        "packages/api-client/src/*"
+      ],
+      "@geonet/ui": [
+        "packages/ui/src"
+      ],
+      "@geonet/ui/*": [
+        "packages/ui/src/*"
+      ]
+    }
+  },
+  "exclude": [
+    "node_modules",
+    "dist",
+    "build"
+  ]
+}

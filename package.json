@@ -1,0 +1,38 @@
+{
+  "name": "geonet-sentinel-monorepo",
+  "version": "1.0.0",
+  "description": "Enterprise Real-Time Location Tracking & Network Monitoring System",
+  "private": true,
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "dev": "node scripts/development/start-all.js",
+    "dev:api": "npm --prefix apps/api run dev",
+    "dev:web": "npm --prefix apps/web run dev",
+    "dev:worker": "npm --prefix apps/worker run dev",
+    "build": "npm --prefix packages/types run build && npm --prefix packages/utils run build && npm --prefix packages/config run build && npm --prefix packages/validation run build && npm --prefix packages/api-client run build && npm --prefix apps/api run build && npm --prefix apps/worker run build && npm --prefix apps/web run build",
+    "test": "node scripts/testing/run-all-tests.js",
+    "test:unit": "npm --prefix apps/api test && npm --prefix apps/web test",
+    "test:e2e": "node tests/run-e2e.js",
+    "lint": "node scripts/development/lint-all.js",
+    "typecheck": "node scripts/development/typecheck-all.js",
+    "db:migrate": "node scripts/database/migrate.js",
+    "db:seed": "node scripts/database/seed.js",
+    "db:reset": "node scripts/database/reset.js",
+    "simulate": "node scripts/development/simulate.js"
+  },
+  "keywords": [
+    "location-tracking",
+    "network-monitoring",
+    "realtime",
+    "leaflet",
+    "postgis",
+    "websockets",
+    "topology",
+    "enterprise"
+  ],
+  "author": "Enterprise Systems Engineering Team",
+  "license": "UNLICENSED"
+}
