@@ -274,22 +274,80 @@ npm --prefix apps/web run build
 
 ---
 
-## 🚀 How to Run Locally
+## 📦 Dependencies
 
-### Start Backend Services
-```powershell
-node scripts/development/start-all.js
+- **Node.js**: `v20.x` or later
+- **npm**: `v10.x` or later
+- **Python**: `3.10+` (optional, for automation scripts)
+- **Docker Compose**: (optional, for multi-container deployments)
+
+---
+
+## 📥 Installation
+
+Clone the repository and install all monorepo workspace dependencies:
+
+```bash
+npm install
 ```
-*Launches API Server (`http://localhost:4000`), Background Prober Daemon, and Autonomous GPS Fleet Mover.*
 
-### Start Frontend Client
-```powershell
+Copy the example environment configuration:
+
+```bash
+cp example.env .env
+```
+
+---
+
+## 🔨 Build
+
+Build all packages, TypeScript libraries, and frontend assets:
+
+```bash
+npm run build
+```
+
+---
+
+## 🚀 Run
+
+Launch the API Gateway, Network Prober, and Frontend Web Client:
+
+```bash
+# Start backend API & Prober Daemon (Port 4000)
+node scripts/development/start-all.js
+
+# In a separate terminal, start Frontend Web Client (Port 5173)
 npm --prefix apps/web run dev
 ```
-*Serves the web client on `http://localhost:5173/`.*
 
-### Run All Tests
-```powershell
+Alternatively, start all services using npm:
+
+```bash
+npm run dev
+```
+
+---
+
+## 📖 Usage
+
+1. Open your browser and navigate to **`http://localhost:5173/`**.
+2. Log in using any of the 9 pre-configured demo credentials (e.g. `admin@geonet.io` / `Admin@123456`).
+3. Access real-time features:
+   - **GPS Tracking**: View live vehicle coordinates and breadcrumb trails at `/tracking`.
+   - **Network NOC**: Monitor node latency, packet loss, and trigger manual sweeps at `/network`.
+   - **Topology**: Explore interactive node dependency graphs at `/topology`.
+   - **Chaos Simulator**: Inject latency and observe system recovery at `/simulation`.
+
+---
+
+## 🧪 Testing
+
+Execute automated unit, integration, and end-to-end verification suites:
+
+```bash
+npm test
 node scripts/testing/run-all-tests.js
 node scripts/testing/verify-all-e2e.js
 ```
+
