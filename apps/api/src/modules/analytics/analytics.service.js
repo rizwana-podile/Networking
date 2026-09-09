@@ -1,4 +1,4 @@
-const db = require('../../../../scripts/database/database-adapter');
+const db = require('../../database/database-adapter');
 class AnalyticsService {
   async getOverviewMetrics() {
     const devices = await db.query('devices');

@@ -1,4 +1,4 @@
-const db = require('../../../../scripts/database/database-adapter');
+const db = require('../../database/database-adapter');
 class AuditService {
   async log(action, resource, details = {}, req = null) {
     const user = req ? req.user : null;

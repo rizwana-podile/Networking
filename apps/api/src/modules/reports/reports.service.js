@@ -1,4 +1,4 @@
-const db = require('../../../../scripts/database/database-adapter');
+const db = require('../../database/database-adapter');
 class ReportsService {
   async generateNetworkSlaCsv() {
     const nodes = await db.query('network_nodes');

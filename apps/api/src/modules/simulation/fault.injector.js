@@ -1,4 +1,4 @@
-const db = require('../../../../scripts/database/database-adapter');
+const db = require('../../database/database-adapter');
 class FaultInjector {
   async injectLatencySpike(nodeId, spikeMs = 200) {
     return db.update('network_nodes', nodeId, { latencyMs: spikeMs, status: 'DEGRADED' });

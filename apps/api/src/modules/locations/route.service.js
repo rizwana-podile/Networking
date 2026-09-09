@@ -1,5 +1,5 @@
-const db = require('../../../../scripts/database/database-adapter');
-const { haversineDistanceMeters } = require('../../../../packages/utils/src/geo');
+const db = require('../../database/database-adapter');
+const { haversineDistanceMeters } = require('../../../../../packages/utils/src/geo');
 class RouteService {
   async getRoute(deviceId, startDate, endDate) {
     const all = await db.query('device_locations');
