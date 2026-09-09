@@ -1,4 +1,4 @@
-const { pointInPolygon, pointInCircle } = require('../../../../packages/utils/src/geo');
+const { pointInPolygon, pointInCircle } = require('../../../../../packages/utils/src/geo');
 class GeofenceService {
   constructor() { this.geofences = []; }
   addGeofence(fence) { this.geofences.push(fence); }

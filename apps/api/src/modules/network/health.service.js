@@ -1,4 +1,4 @@
-const db = require('../../../../scripts/database/database-adapter');
+const db = require('../../database/database-adapter');
 class NetworkHealthService {
   async calculateHealthScore(node) {
     let score = 100;

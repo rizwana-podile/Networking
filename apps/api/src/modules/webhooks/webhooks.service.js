@@ -1,5 +1,5 @@
 const crypto = require('crypto');
-const db = require('../../../../scripts/database/database-adapter');
+const db = require('../../database/database-adapter');
 class WebhooksService {
   async registerWebhook(name, targetUrl, events = ['alert.created']) {
     const secret = crypto.randomBytes(32).toString('hex');

@@ -1,4 +1,4 @@
-const db = require('../../../../scripts/database/database-adapter');
+const db = require('../../database/database-adapter');
 class NetworkNodesService {
   async listNodes(query = {}) {
     let nodes = await db.query('network_nodes');

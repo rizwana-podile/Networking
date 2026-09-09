@@ -1,4 +1,4 @@
-const db = require('../../../../scripts/database/database-adapter');
+const db = require('../../database/database-adapter');
 const passwordService = require('./password.service');
 const jwtService = require('./jwt.service');
 class LoginService {

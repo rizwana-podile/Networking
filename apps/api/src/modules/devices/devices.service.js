@@ -1,4 +1,4 @@
-const db = require('../../../../scripts/database/database-adapter');
+const db = require('../../database/database-adapter');
 const deviceKeyService = require('./device-key.service');
 class DevicesService {
   async listDevices(query = {}) {

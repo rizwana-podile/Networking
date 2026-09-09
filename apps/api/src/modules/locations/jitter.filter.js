@@ -1,4 +1,4 @@
-const { haversineDistanceMeters } = require('../../../../packages/utils/src/geo');
+const { haversineDistanceMeters } = require('../../../../../packages/utils/src/geo');
 class JitterFilter {
   isAnomaly(lastPoint, currentPoint, maxSpeedKph = 300) {
     if (!lastPoint) return false;

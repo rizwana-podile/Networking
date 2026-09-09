@@ -1,4 +1,4 @@
-const db = require('../../../../scripts/database/database-adapter');
+const db = require('../../database/database-adapter');
 const passwordService = require('./password.service');
 class RegisterService {
   async register(data) {
