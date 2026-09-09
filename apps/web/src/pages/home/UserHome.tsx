@@ -313,7 +313,7 @@ export const UserHomePage: React.FC = () => {
                     History
                   </button>
                   <button
-                    onClick={() => setSelectedModalDevice(d)}
+                    onClick={() => navigate(`/devices/${devKey}`)}
                     className="py-1.5 px-2 rounded-lg text-slate-400 hover:text-white text-xs transition"
                   >
                     Details
@@ -350,6 +350,108 @@ export const UserHomePage: React.FC = () => {
               <span className="text-[11px] text-slate-500 font-medium shrink-0 ml-3">{ev.time}</span>
             </div>
           ))}
+        </div>
+      </div>
+
+      {/* ALERT SUMMARY Section */}
+      <div className="bg-slate-900/90 border border-slate-800 rounded-2xl p-6 shadow-xl space-y-4">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center space-x-2">
+            <span className="text-lg">🚨</span>
+            <h2 className="text-lg font-bold text-white tracking-tight">ALERT SUMMARY</h2>
+            <span className="px-2 py-0.5 rounded-full bg-rose-500/10 text-rose-400 border border-rose-500/20 text-[10px] font-bold">
+              2 Active Incidents
+            </span>
+          </div>
+          <button
+            onClick={() => navigate('/alerts')}
+            className="text-xs font-semibold text-cyan-400 hover:text-cyan-300 transition"
+          >
+            Incident Command Console &rarr;
+          </button>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="p-4 bg-slate-950/70 rounded-xl border border-slate-800 flex items-start justify-between text-xs">
+            <div className="space-y-1">
+              <div className="flex items-center space-x-2">
+                <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-500/10 text-amber-400 border border-amber-500/20">
+                  MEDIUM
+                </span>
+                <span className="font-bold text-white">Speed Threshold Alarm</span>
+              </div>
+              <p className="text-slate-400 text-[11px]">DEV-GPS-001 (Cruiser 01) &bull; Registered 58.7 km/h</p>
+            </div>
+            <button
+              onClick={() => navigate('/alerts')}
+              className="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-[11px] font-semibold border border-slate-700 transition"
+            >
+              Triage
+            </button>
+          </div>
+
+          <div className="p-4 bg-slate-950/70 rounded-xl border border-slate-800 flex items-start justify-between text-xs">
+            <div className="space-y-1">
+              <div className="flex items-center space-x-2">
+                <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-rose-500/10 text-rose-400 border border-rose-500/20">
+                  HIGH
+                </span>
+                <span className="font-bold text-white">Edge SLA Latency Spike</span>
+              </div>
+              <p className="text-slate-400 text-[11px]">Disaster Recovery Edge &bull; 145ms &gt; 100ms SLA</p>
+            </div>
+            <button
+              onClick={() => navigate('/alerts')}
+              className="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-[11px] font-semibold border border-slate-700 transition"
+            >
+              Triage
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* NETWORK HEALTH SUMMARY Section */}
+      <div className="bg-slate-900/90 border border-slate-800 rounded-2xl p-6 shadow-xl space-y-4">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center space-x-2">
+            <span className="text-lg">🌐</span>
+            <h2 className="text-lg font-bold text-white tracking-tight">NETWORK HEALTH SUMMARY</h2>
+            <span className="px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-[10px] font-bold">
+              99.98% UPTIME
+            </span>
+          </div>
+          <button
+            onClick={() => navigate('/network')}
+            className="text-xs font-semibold text-cyan-400 hover:text-cyan-300 transition"
+          >
+            Launch NOC Console &rarr;
+          </button>
+        </div>
+
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
+          <div className="p-3 bg-slate-950/70 rounded-xl border border-slate-800">
+            <span className="text-slate-500 block text-[10px] uppercase font-bold">Core Ingress</span>
+            <span className="text-emerald-400 font-bold text-sm mt-0.5 block">ONLINE</span>
+            <span className="text-slate-400 text-[10px]">4.2ms Mean Latency</span>
+          </div>
+
+          <div className="p-3 bg-slate-950/70 rounded-xl border border-slate-800">
+            <span className="text-slate-500 block text-[10px] uppercase font-bold">Border Routers</span>
+            <span className="text-emerald-400 font-bold text-sm mt-0.5 block">ONLINE</span>
+            <span className="text-slate-400 text-[10px]">0.00% Packet Loss</span>
+          </div>
+
+          <div className="p-3 bg-slate-950/70 rounded-xl border border-slate-800">
+            <span className="text-slate-500 block text-[10px] uppercase font-bold">Spatial Database</span>
+            <span className="text-emerald-400 font-bold text-sm mt-0.5 block">HEALTHY</span>
+            <span className="text-slate-400 text-[10px]">PostGIS Cluster Synced</span>
+          </div>
+
+          <div className="p-3 bg-slate-950/70 rounded-xl border border-slate-800">
+            <span className="text-slate-500 block text-[10px] uppercase font-bold">Edge DR Relay</span>
+            <span className="text-amber-400 font-bold text-sm mt-0.5 block">DEGRADED</span>
+            <span className="text-slate-400 text-[10px]">Failover Hot Active</span>
+          </div>
         </div>
       </div>
 

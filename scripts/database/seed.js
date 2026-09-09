@@ -5,8 +5,13 @@ async function seed() {
   console.log('Seeding GeoNet Sentinel database...');
   const users = [
     { id: 'usr-admin', email: 'admin@geonet.io', password_hash: hashPassword('Admin@123456'), name: 'Dr. Sarah Connor', role: 'SUPER_ADMIN', isActive: true },
+    { id: 'usr-sysadmin', email: 'sysadmin@geonet.io', password_hash: hashPassword('Admin@123456'), name: 'Commander John Vance', role: 'ADMIN', isActive: true },
     { id: 'usr-net-admin', email: 'netadmin@geonet.io', password_hash: hashPassword('NetAdmin@123'), name: 'Marcus Brody', role: 'NETWORK_ADMIN', isActive: true },
     { id: 'usr-operator', email: 'operator@geonet.io', password_hash: hashPassword('Operator@123'), name: 'Elena Rostova', role: 'NETWORK_OPERATOR', isActive: true },
+    { id: 'usr-monitor', email: 'monitor@geonet.io', password_hash: hashPassword('Monitor@123'), name: 'David Miller', role: 'MONITORING_OPERATOR', isActive: true },
+    { id: 'usr-manager', email: 'manager@geonet.io', password_hash: hashPassword('Manager@123'), name: 'Rachel Green', role: 'MANAGER', isActive: true },
+    { id: 'usr-owner', email: 'owner@geonet.io', password_hash: hashPassword('Owner@123'), name: 'Carlos Mendoza', role: 'DEVICE_OWNER', isActive: true },
+    { id: 'usr-user', email: 'user@geonet.io', password_hash: hashPassword('User@123'), name: 'Samantha Lee', role: 'STANDARD_USER', isActive: true },
     { id: 'usr-viewer', email: 'viewer@geonet.io', password_hash: hashPassword('Viewer@123'), name: 'Jonathan Vance', role: 'VIEWER', isActive: true }
   ];
   for (const u of users) await db.insert('users', u);

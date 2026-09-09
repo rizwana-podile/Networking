@@ -7,6 +7,7 @@ import { UserHomePage } from './pages/home/UserHome';
 import { LiveTrackingMap } from './pages/tracking/LiveMap';
 import { RoutePlayback } from './pages/tracking/RoutePlayback';
 import { DeviceManagement } from './pages/devices/DeviceManagement';
+import { DeviceDetailsPage } from './pages/devices/DeviceDetails';
 import { UserProfilePage } from './pages/profile/UserProfile';
 import { ForbiddenPage } from './pages/error/Forbidden';
 import { ExecutiveDashboard } from './pages/dashboard/ExecutiveDashboard';
@@ -20,16 +21,19 @@ import { ApiManagement } from './pages/apikeys/ApiManagement';
 import { SimulationConsole } from './pages/simulation/SimulationConsole';
 import { useAuthStore } from './stores/authStore';
 
-// Root Route Dispatcher according to authenticated role
+// Root Route Dispatcher according to authenticated role exactly per specification
 const RootDispatcher: React.FC = () => {
   const { user } = useAuthStore();
   const role = user?.role || 'VIEWER';
 
   if (role === 'SUPER_ADMIN' || role === 'ADMIN') {
     return <ExecutiveDashboard />;
-  } else if (role === 'NETWORK_OPERATOR' || role === 'NETWORK_ADMIN') {
+  } else if (role === 'NETWORK_OPERATOR' || role === 'NETWORK_ADMIN' || role === 'MONITORING_OPERATOR') {
     return <Navigate to="/network" replace />;
+  } else if (role === 'MANAGER') {
+    return <Navigate to="/analytics" replace />;
   } else {
+    // STANDARD_USER, DEVICE_OWNER, VIEWER
     return <Navigate to="/home" replace />;
   }
 };
@@ -76,6 +80,7 @@ export const App: React.FC = () => {
                       <Route path="/home" element={<UserHomePage />} />
                       <Route path="/tracking" element={<LiveTrackingMap />} />
                       <Route path="/devices" element={<DeviceManagement />} />
+                      <Route path="/devices/:id" element={<DeviceDetailsPage />} />
                       <Route path="/playback" element={<RoutePlayback />} />
                       <Route path="/alerts" element={<AlertsConsole />} />
                       <Route path="/profile" element={<UserProfilePage />} />

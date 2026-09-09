@@ -37,13 +37,16 @@ export const LoginPage: React.FC = () => {
       // Save token and user in persistent auth store
       login(data.user, data.tokens?.accessToken || 'token_' + Date.now());
 
-      // Route according to assigned role
+      // Route according to assigned role exactly per specifications
       const role = data.user.role;
       if (role === 'SUPER_ADMIN' || role === 'ADMIN') {
         navigate('/');
-      } else if (role === 'NETWORK_OPERATOR' || role === 'NETWORK_ADMIN') {
+      } else if (role === 'NETWORK_OPERATOR' || role === 'NETWORK_ADMIN' || role === 'MONITORING_OPERATOR') {
         navigate('/network');
+      } else if (role === 'MANAGER') {
+        navigate('/analytics');
       } else {
+        // STANDARD_USER, DEVICE_OWNER, VIEWER
         navigate('/home');
       }
     } catch (err: any) {
@@ -188,55 +191,88 @@ export const LoginPage: React.FC = () => {
               </span>
             </div>
 
-            {/* Role Demo Cards */}
-            <div className="grid grid-cols-2 gap-2">
-              <button
-                type="button"
-                onClick={() => handleDemoClick('viewer@geonet.io', 'Viewer@123')}
-                className="p-2.5 rounded-xl border border-slate-200 hover:border-cyan-500 hover:bg-cyan-50/50 transition text-left group"
-              >
-                <div className="flex items-center space-x-2 mb-0.5">
-                  <span className="text-base">👤</span>
-                  <span className="text-xs font-bold text-slate-800 group-hover:text-cyan-700">Standard User</span>
-                </div>
-                <div className="text-[10px] text-slate-500 truncate">Viewer • Live Tracking</div>
-              </button>
+            {/* Role Demo Selector */}
+            <div className="space-y-2">
+              <div className="grid grid-cols-3 gap-1.5 text-center">
+                <button
+                  type="button"
+                  onClick={() => handleDemoClick('user@geonet.io', 'User@123')}
+                  className="p-2 rounded-xl border border-slate-200 hover:border-cyan-500 hover:bg-cyan-50/50 transition text-left group"
+                >
+                  <div className="text-[11px] font-bold text-slate-800 group-hover:text-cyan-700">Standard User</div>
+                  <div className="text-[9px] text-slate-400">/home</div>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => handleDemoClick('owner@geonet.io', 'Owner@123')}
+                  className="p-2 rounded-xl border border-slate-200 hover:border-cyan-500 hover:bg-cyan-50/50 transition text-left group"
+                >
+                  <div className="text-[11px] font-bold text-slate-800 group-hover:text-cyan-700">Device Owner</div>
+                  <div className="text-[9px] text-slate-400">/home</div>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => handleDemoClick('viewer@geonet.io', 'Viewer@123')}
+                  className="p-2 rounded-xl border border-slate-200 hover:border-cyan-500 hover:bg-cyan-50/50 transition text-left group"
+                >
+                  <div className="text-[11px] font-bold text-slate-800 group-hover:text-cyan-700">Viewer</div>
+                  <div className="text-[9px] text-slate-400">/home</div>
+                </button>
+              </div>
 
-              <button
-                type="button"
-                onClick={() => handleDemoClick('operator@geonet.io', 'Operator@123')}
-                className="p-2.5 rounded-xl border border-slate-200 hover:border-cyan-500 hover:bg-cyan-50/50 transition text-left group"
-              >
-                <div className="flex items-center space-x-2 mb-0.5">
-                  <span className="text-base">🌐</span>
-                  <span className="text-xs font-bold text-slate-800 group-hover:text-cyan-700">Network Operator</span>
-                </div>
-                <div className="text-[10px] text-slate-500 truncate">NOC Console • Alarms</div>
-              </button>
+              <div className="grid grid-cols-3 gap-1.5 text-center">
+                <button
+                  type="button"
+                  onClick={() => handleDemoClick('operator@geonet.io', 'Operator@123')}
+                  className="p-2 rounded-xl border border-slate-200 hover:border-cyan-500 hover:bg-cyan-50/50 transition text-left group"
+                >
+                  <div className="text-[11px] font-bold text-slate-800 group-hover:text-cyan-700">Net Operator</div>
+                  <div className="text-[9px] text-slate-400">/network</div>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => handleDemoClick('monitor@geonet.io', 'Monitor@123')}
+                  className="p-2 rounded-xl border border-slate-200 hover:border-cyan-500 hover:bg-cyan-50/50 transition text-left group"
+                >
+                  <div className="text-[11px] font-bold text-slate-800 group-hover:text-cyan-700">Monitor Oper</div>
+                  <div className="text-[9px] text-slate-400">/network</div>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => handleDemoClick('netadmin@geonet.io', 'NetAdmin@123')}
+                  className="p-2 rounded-xl border border-slate-200 hover:border-cyan-500 hover:bg-cyan-50/50 transition text-left group"
+                >
+                  <div className="text-[11px] font-bold text-slate-800 group-hover:text-cyan-700">Net Admin</div>
+                  <div className="text-[9px] text-slate-400">/network</div>
+                </button>
+              </div>
 
-              <button
-                type="button"
-                onClick={() => handleDemoClick('netadmin@geonet.io', 'NetAdmin@123')}
-                className="p-2.5 rounded-xl border border-slate-200 hover:border-cyan-500 hover:bg-cyan-50/50 transition text-left group"
-              >
-                <div className="flex items-center space-x-2 mb-0.5">
-                  <span className="text-base">🔧</span>
-                  <span className="text-xs font-bold text-slate-800 group-hover:text-cyan-700">Network Admin</span>
-                </div>
-                <div className="text-[10px] text-slate-500 truncate">Topology • Probers</div>
-              </button>
-
-              <button
-                type="button"
-                onClick={() => handleDemoClick('admin@geonet.io', 'Admin@123456')}
-                className="p-2.5 rounded-xl border border-slate-200 hover:border-cyan-500 hover:bg-cyan-50/50 transition text-left group"
-              >
-                <div className="flex items-center space-x-2 mb-0.5">
-                  <span className="text-base">🛡️</span>
-                  <span className="text-xs font-bold text-slate-800 group-hover:text-cyan-700">Super Admin</span>
-                </div>
-                <div className="text-[10px] text-slate-500 truncate">Executive Operations Center</div>
-              </button>
+              <div className="grid grid-cols-3 gap-1.5 text-center">
+                <button
+                  type="button"
+                  onClick={() => handleDemoClick('manager@geonet.io', 'Manager@123')}
+                  className="p-2 rounded-xl border border-slate-200 hover:border-cyan-500 hover:bg-cyan-50/50 transition text-left group"
+                >
+                  <div className="text-[11px] font-bold text-slate-800 group-hover:text-cyan-700">Manager</div>
+                  <div className="text-[9px] text-slate-400">/analytics</div>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => handleDemoClick('sysadmin@geonet.io', 'Admin@123456')}
+                  className="p-2 rounded-xl border border-slate-200 hover:border-cyan-500 hover:bg-cyan-50/50 transition text-left group"
+                >
+                  <div className="text-[11px] font-bold text-slate-800 group-hover:text-cyan-700">Admin</div>
+                  <div className="text-[9px] text-slate-400">/ (Executive)</div>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => handleDemoClick('admin@geonet.io', 'Admin@123456')}
+                  className="p-2 rounded-xl border border-slate-200 hover:border-cyan-500 hover:bg-cyan-50/50 transition text-left group"
+                >
+                  <div className="text-[11px] font-bold text-slate-800 group-hover:text-cyan-700">Super Admin</div>
+                  <div className="text-[9px] text-slate-400">/ (Executive)</div>
+                </button>
+              </div>
             </div>
           </div>
         </div>
